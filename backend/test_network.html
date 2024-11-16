@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC Client</title>
+    <style>
+        video {
+            width: 45%;
+            margin: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>WebRTC Client</h1>
+    <button id="start">Начать соединение</button>
+    <button id="call" disabled>Позвонить</button>
+    <button id="hangup" disabled>Завершить звонок</button>
+
+    <div>
+        <h2>Локальное видео</h2>
+        <video id="localVideo" autoplay muted></video>
+    </div>
+    
+    <div>
+        <h2>Удаленное видео</h2>
+        <video id="remoteVideo" autoplay></video>
+    </div>
+
+    <script>
+        const localVideo = document.getElementById('localVideo');
+        const remoteVideo = document.getElementById('remoteVideo');
+        const startButton = document.getElementById('start');
+        const callButton = document.getElementById('call');
+        const hangupButton = document.getElementById('hangup');
+
+        let localStream;
+        let remoteStream;
+        let peerConnection;
+        const signalingServerUrl = 'ws://localhost:8000/ws/myroom'; // Укажите адрес вашего сигнального сервера
+        const iceServers = {
+            iceServers: [
+                { urls: 'stun:stun.l.google.com:19302' } // STUN-сервер для получения публичного IP
+            ]
+        };
+
+        // Подключение к сигнальному серверу
+        const socket = new WebSocket(signalingServerUrl);
+
+        socket.onmessage = async (message) => {
+            const data = JSON.parse(message.data);
+            if (data.offer) {
+                await handleOffer(data.offer);
+            } else if (data.answer) {
+                await handleAnswer(data.answer);
+            } else if (data.candidate) {
+                await handleCandidate(data.candidate);
+            }
+        };
+
+        startButton.onclick = async () => {
+            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            localVideo.srcObject = localStream;
+            callButton.disabled = false;
+            startButton.disabled = true;
+        };
+remoteStream = new MediaStream();
+        callButton.onclick = async () => {
+            peerConnection = new RTCPeerConnection(iceServers);
+            
+            remoteVideo.srcObject = remoteStream;
+
+            // Добавление локального потока в PeerConnection
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+            peerConnection.onicecandidate = event => {
+                if (event.candidate) {
+                    socket.send(JSON.stringify({ candidate: event.candidate }));
+                }
+            };
+
+            peerConnection.ontrack = event => {
+                remoteStream.addTrack(event.track);
+            };
+
+            // Создание оффера
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+            socket.send(JSON.stringify({ offer }));
+
+            callButton.disabled = true;
+            hangupButton.disabled = false;
+        };
+
+        hangupButton.onclick = () => {
+            peerConnection.close();
+            socket.close();
+            hangupButton.disabled = true;
+            callButton.disabled = false;
+            startButton.disabled = false;
+        };
+
+        async function handleOffer(offer) {
+            peerConnection = new RTCPeerConnection(iceServers);
+            remoteStream = new MediaStream();
+            remoteVideo.srcObject = remoteStream;
+
+            peerConnection.onicecandidate = event => {
+                if (event.candidate) {
+                    socket.send(JSON.stringify({ candidate: event.candidate }));
+                }
+            };
+
+            peerConnection.ontrack = event => {
+                remoteStream.addTrack(event.track);
+            };
+
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+            
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+            
+            socket.send(JSON.stringify({ answer }));
+        }
+
+        async function handleAnswer(answer) {
+            console.log(answer)
+            console.log(peerConnection)
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+        }
+
+        async function handleCandidate(candidate) {
+            await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+        }
+    </script>
+</body>
+</html>
