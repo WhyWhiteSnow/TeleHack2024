@@ -1,0 +1,20 @@
+networks:
+    net:
+        name: project-net
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: 192.168.80.0/24
+                  gateway: 192.168.80.1
+
+services:
+    front:
+        container_name: frontend
+        build:
+            context: ./frontend
+        command: sh -c "http-server dist -p 80"
+        ports:
+            - 80:80
+        networks:
+            net:
