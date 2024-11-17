@@ -13,8 +13,8 @@
         <default-button class="btn" @click="switchForm"> Авторизовать Оператора </default-button>
       </div>
       <div class="swap" v-else-if="isTerminal === false">
-        <default-button class="selected-form">Авторизация Оператора</default-button>
         <default-button class="btn" @click="switchForm">Авторизовать Терминал</default-button>
+        <default-button class="selected-form">Авторизация Оператора</default-button>
       </div>
     </transition>
     <transition name="slide-fade" mode="out-in">
@@ -72,9 +72,10 @@ export default {
 .swap {
   margin: 1% 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 .selected-form {
+  margin: 0 2%;
   background-color: white;
   color: rgb(07, 01, 23);
   height: 50px;
