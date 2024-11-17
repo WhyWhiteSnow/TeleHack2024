@@ -60,8 +60,10 @@
         };
 
         startButton.onclick = async () => {
-            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            localVideo.srcObject = localStream;
+            // localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            localStreamDesctop = await navigator.mediaDevices.getDisplayMedia()
+            // localVideo.srcObject = localStream;
+            localVideo.srcObject = localStreamDesctop;
             callButton.disabled = false;
             startButton.disabled = true;
         };
