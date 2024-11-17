@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="terminals" v-for="terminal in terminals">
-        <div class="terminal">
+        <div class="terminal" @click="$router.push('/call')">
           <img :src="terminal.imgSrc" alt="Видео с терминала" title="Видео с терминала" />
           <div class="name">{{ terminal.name }}</div>
           <div class="address">{{ terminal.address }}</div>
@@ -82,6 +82,7 @@ export default {
   width: 20%;
 }
 .terminal {
+  cursor: pointer;
   border: solid 3px lightgray;
   margin: 5px;
   background-color: white;
