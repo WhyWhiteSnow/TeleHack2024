@@ -14,7 +14,8 @@
 </head>
 <body>
     <h1>WebRTC Client</h1>
-    <button id="start">Начать соединение</button>
+    <button id="startWebCamera">включить веб-камеру</button>
+    <button id="startScreenShare">включить демонстрацию экрана</button>
     <button id="call" disabled>Позвонить</button>
     <button id="hangup" disabled>Завершить звонок</button>
 
@@ -31,7 +32,8 @@
     <script>
         const localVideo = document.getElementById('localVideo');
         const remoteVideo = document.getElementById('remoteVideo');
-        const startButton = document.getElementById('start');
+        const startWebCameraButton = document.getElementById('startWebCamera');
+        const startScreenShareButton = document.getElementById('startScreenShare');
         const callButton = document.getElementById('call');
         const hangupButton = document.getElementById('hangup');
 
@@ -59,13 +61,22 @@
             }
         };
 
-        startButton.onclick = async () => {
-            // localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            localStreamDesctop = await navigator.mediaDevices.getDisplayMedia()
-            // localVideo.srcObject = localStream;
-            localVideo.srcObject = localStreamDesctop;
+
+        startWebCameraButton.onclick = async () => {
+            localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            localVideo.srcObject = localStream;
+
             callButton.disabled = false;
-            startButton.disabled = true;
+            startWebCameraButton.disabled = true;
+            startScreenShareButton.disabled = false;
+        };
+        startScreenShareButton.onclick = async () => {
+            localStream = await navigator.mediaDevices.getDisplayMedia()
+            localVideo.srcObject = localStream;
+
+            callButton.disabled = false;
+            startScreenShareButton.disabled = true;
+            startWebCameraButton.disabled = false;
         };
 remoteStream = new MediaStream();
         callButton.onclick = async () => {
@@ -96,11 +107,13 @@ remoteStream = new MediaStream();
         };
 
         hangupButton.onclick = () => {
-            peerConnection.close();
-            socket.close();
-            hangupButton.disabled = true;
-            callButton.disabled = false;
-            startButton.disabled = false;
+            //вернуть на начальную страницу
+            document.location.href=document.location.href
+            // peerConnection.close();
+            // socket.close();
+            // hangupButton.disabled = true;
+            // callButton.disabled = false;
+            // startButton.disabled = false;
         };
 
         async function handleOffer(offer) {
