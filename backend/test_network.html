@@ -61,18 +61,11 @@
             }
         };
 
-<<<<<<< HEAD
+
         startWebCameraButton.onclick = async () => {
             localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
             localVideo.srcObject = localStream;
 
-=======
-        startButton.onclick = async () => {
-            // localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-            localStream = await navigator.mediaDevices.getDisplayMedia()
-            // localVideo.srcObject = localStream;
-            localVideo.srcObject = localStream;
->>>>>>> 6b3df801c225d98edccc4f2b064d80518b0ba628
             callButton.disabled = false;
             startWebCameraButton.disabled = true;
             startScreenShareButton.disabled = false;
