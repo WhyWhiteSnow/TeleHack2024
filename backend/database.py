@@ -6,8 +6,9 @@ engine = create_engine("postgresql://postgres:123456@localhost:5432/test")
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
+
 def get_db():
-    db=SessionLocal()
+    db = SessionLocal()
     try:
         yield db
     finally:
