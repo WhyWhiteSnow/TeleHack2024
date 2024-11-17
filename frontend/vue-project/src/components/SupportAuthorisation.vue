@@ -12,10 +12,10 @@
         />
         <default-button @click="switchVisibility" class="show">
           <span v-if="passwordFieldType === 'password'">
-            <font-awesome-icon icon="fa-solid fa-eye" />
+            <font-awesome-icon icon="fa-solid fa-eye" fa="xl" />
           </span>
           <span v-else-if="passwordFieldType === 'text'">
-            <font-awesome-icon icon="fa-solid fa-eye-slash" />
+            <font-awesome-icon icon="fa-solid fa-eye-slash" fa="xl" />
           </span>
         </default-button>
       </p>
@@ -31,7 +31,6 @@ export default {
   name: 'term_auth',
   data() {
     return {
-      password: '',
       passwordFieldType: 'password',
     }
   },
@@ -65,9 +64,8 @@ export default {
   border: solid white;
   border-left: none;
   border-radius: 0 50px 50px 0;
-  padding: 1% 2% 1% 1%;
+  padding: 1% 3% 1% 1%;
   margin: 2% 0;
-  font-size: small;
   width: 35px;
 }
 .show:active {

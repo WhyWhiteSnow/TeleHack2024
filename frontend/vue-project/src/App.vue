@@ -4,7 +4,28 @@
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      terminals: { id: '', password: '' },
+      supports: { id: '', password: '' },
+      applications: [
+        {
+          activity: '',
+          surname: '',
+          name: '',
+          patronymic: '',
+          address: '',
+          phone: '',
+          email: '',
+          connectionDate: '',
+        },
+      ],
+    }
+  },
+}
+</script>
 
 <style>
 * {

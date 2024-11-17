@@ -6,7 +6,7 @@
         alt="Логотип компании"
         class="base-logo"
         height="70px"
-        width="70px"
+        width="90px"
       />
       <h1>Sevencom</h1>
     </div>
@@ -34,6 +34,6 @@ export default {
 .website,
 .phone {
   font-size: larger;
-  margin-left: 75px;
+  margin-left: 90px;
 }
 </style>

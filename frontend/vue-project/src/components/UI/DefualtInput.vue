@@ -1,28 +1,14 @@
 <template>
-  <input
-    v-model="id"
-    type="number"
-    required
-    min="1"
-    max="100"
-    placeholder="Укажите id"
-    autofocus
-    title="Укажите id терминала"
-  />
+  <input type="text" required />
 </template>
 
 <script>
 export default {
-  name: 'id-input',
-  data() {
-    return {
-      id: '',
-    }
-  },
+  name: 'def-input',
 }
 </script>
 
-<style scoped>
+<style>
 input {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: larger;
