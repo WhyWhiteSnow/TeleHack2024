@@ -1,7 +1,9 @@
 <template>
   <div class="header">
-    <p class="header-icon"><font-awesome-icon icon="fa-solid fa-circle" size="lg" /></p>
-    <h1>Авторизация</h1>
+    <div class="page-title">
+      <p class="header-icon"><font-awesome-icon icon="fa-solid fa-circle" size="lg" /></p>
+      <h1>Авторизация</h1>
+    </div>
     <company-info class="comp-inf"></company-info>
   </div>
   <div class="container">
@@ -50,9 +52,13 @@ export default {
   display: flex;
   color: rgb(07, 01, 23);
   background-color: white;
-  padding: 2% 10%;
+  padding: 1%;
   align-items: center;
   justify-content: space-around;
+}
+.page-title {
+  display: flex;
+  align-items: center;
 }
 .comp-inf {
   padding-left: 25%;
@@ -61,7 +67,7 @@ export default {
   height: 100%;
 }
 .header-icon {
-  padding-right: 1%;
+  padding-right: 3%;
 }
 .swap {
   margin: 1% 0;

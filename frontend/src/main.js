@@ -17,6 +17,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
+import { faComments } from '@fortawesome/free-regular-svg-icons'
 
 library.add(
   faGlobe,
@@ -29,6 +30,7 @@ library.add(
   faEyeSlash,
   faUser,
   faEnvelope,
+  faComments,
 )
 
 const app = createApp(App)

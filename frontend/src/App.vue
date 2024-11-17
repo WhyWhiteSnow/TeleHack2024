@@ -10,18 +10,16 @@ export default {
     return {
       terminals: { id: '', password: '' },
       supports: { id: '', password: '' },
-      applications: [
-        {
-          activity: '',
-          surname: '',
-          name: '',
-          patronymic: '',
-          address: '',
-          phone: '',
-          email: '',
-          connectionDate: '',
-        },
-      ],
+      application: {
+        activity: '',
+        surname: '',
+        name: '',
+        patronymic: '',
+        address: '',
+        phone: '',
+        email: '',
+        connectionDate: '',
+      },
     }
   },
 }

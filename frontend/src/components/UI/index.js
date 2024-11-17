@@ -5,6 +5,7 @@ import PassInput from '@/components/UI/PassInput.vue'
 import CompanyInfoHeaderFull from '@/components/UI/CompanyInfoHeaderFull.vue'
 import DefualtInput from '@/components/UI/DefualtInput.vue'
 import HeaderForConnection from '@/components/UI/HeaderForConnection.vue'
+import HeaderForCallPage from '@/components/UI/HeaderForCallPage.vue'
 
 export default [
   DefaultButton,
@@ -14,4 +15,5 @@ export default [
   CompanyInfoHeaderFull,
   DefualtInput,
   HeaderForConnection,
+  HeaderForCallPage,
 ]

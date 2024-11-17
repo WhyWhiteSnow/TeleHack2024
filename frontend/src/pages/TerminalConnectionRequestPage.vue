@@ -4,7 +4,7 @@
     <form class="conn-form" @submit.prevent="submitForm">
       <div class="select">
         <label for="activity">ВЫБЕРИТЕ УСЛУГУ</label>
-        <select name="activity" id="activity" v-model="activity">
+        <select name="activity" id="activity" v-model="application.activity">
           <option value="TV">Телевидение</option>
           <option value="internet">Интернет</option>
           <option value="cctv">Видеонаблюдение</option>
@@ -14,7 +14,7 @@
       <p>Заполните формы</p>
       <div class="person-name">
         <def-input
-          v-model="surname"
+          v-model="application.surname"
           class="input"
           maxlength="30"
           placeholder="Введите Фамилию"
@@ -80,14 +80,16 @@ export default {
   data() {
     return {
       today: new Date().toISOString().split('T')[0],
-      activity: '',
-      surname: '',
-      name: '',
-      patronymic: '',
-      address: '',
-      phone: '',
-      email: '',
-      connectionDate: '',
+      application: {
+        activity: '',
+        surname: '',
+        name: '',
+        patronymic: '',
+        address: '',
+        phone: '',
+        email: '',
+        connectionDate: '',
+      },
     }
   },
   methods: {

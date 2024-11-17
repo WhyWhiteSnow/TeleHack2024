@@ -1,7 +1,13 @@
 <template>
-  <full-header></full-header>
+  <call-header></call-header>
 </template>
 
 <script></script>
 
-<style scoped></style>
+<style scoped>
+.header {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+}
+</style>
