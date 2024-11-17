@@ -18,3 +18,36 @@ services:
             - 80:80
         networks:
             net:
+
+    back:
+        container_name: backend
+        build:
+            context: ./backend
+        env_file:
+            - ./backend/.env
+        command: sh -c "uvicorn server:app --host 0.0.0.0 --port 8000"
+        # expose:
+        #     - 8000
+        ports:
+            - 8000:8000
+        networks:
+            net:
+        depends_on:
+            - pgdb
+
+    pgdb:
+        image: postgres:16
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_DB=test
+            - POSTGRES_USER=postgress
+            - POSTGRES_PASSWORD=123456
+        restart: always
+        networks:
+            net:
+        volumes:
+            - pgdbdata:/var/lib/postgresql/data/
+
+volumes:
+    pgdbdata:
