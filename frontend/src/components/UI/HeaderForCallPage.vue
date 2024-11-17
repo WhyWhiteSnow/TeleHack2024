@@ -2,7 +2,7 @@
   <div class="header">
     <div class="header-name">
       <font-awesome-icon class="header-icon" icon="fa-regular fa-comments" size="2xl" />
-      <h1>Видезвонок</h1>
+      <h1>Видеозвонок</h1>
     </div>
     <div class="comp-title">
       <img

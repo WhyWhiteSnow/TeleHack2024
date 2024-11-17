@@ -18,6 +18,11 @@ import { faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { faComments } from '@fortawesome/free-regular-svg-icons'
+import { faDisplay } from '@fortawesome/free-solid-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { faPhoneSlash } from '@fortawesome/free-solid-svg-icons'
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
+import { faMicrophoneSlash } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faGlobe,
@@ -31,6 +36,11 @@ library.add(
   faUser,
   faEnvelope,
   faComments,
+  faDisplay,
+  faPhone,
+  faPhoneSlash,
+  faMicrophone,
+  faMicrophoneSlash,
 )
 
 const app = createApp(App)
