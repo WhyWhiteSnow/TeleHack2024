@@ -3,8 +3,8 @@
 ### откройте треминал(powershell), перейдите в папку с проектом.
 ### скопируйте репозиторий git clone https://github.com/WhyWhiteSnow/TeleHack2024.git 
 ## база данных
-### восстановите резервную копию бд postgres из файла в корне
-### в файле backend/database укажите путь к бд
+### в файле backend/database укажите путь к бд, в которую должны создаться таблицы, юзера, пароль
+### после запуска сервера у вас создастся база данных postgres, заполните ее тестовыми данными
 ## бэкэнд
 ### pip install -r requirements.txt
 ### python -m uvicorn server:app
