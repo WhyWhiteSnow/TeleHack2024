@@ -1,7 +1,7 @@
 <template>
   <div class="supp-auth">
     <form @submit.prevent>
-      <p><id-input id="id" name="id" class="id" placeholder="Укажите id оператора" /></p>
+      <p><id-input id="id" name="id" class="id" placeholder="Укажите логин преподавателя" /></p>
       <p class="pass-input">
         <pass-input
           id="password"

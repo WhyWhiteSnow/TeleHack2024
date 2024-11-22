@@ -1,5 +1,5 @@
 <template>
-  <input type="password" required placeholder="Введите пароль" title="Введите пароль терминала" />
+  <input type="password" required placeholder="Введите пароль" />
 </template>
 
 <script>

@@ -9,12 +9,12 @@
   <div class="container">
     <transition name="slide-fade" mode="out-in">
       <div class="swap" v-if="isTerminal === true">
-        <default-button class="selected-form">Авторизация Терминала</default-button>
-        <default-button class="btn" @click="switchForm"> Авторизовать Оператора </default-button>
+        <default-button class="selected-form">Авторизация Студента</default-button>
+        <default-button class="btn" @click="switchForm"> Авторизовать Преподавателя </default-button>
       </div>
       <div class="swap" v-else-if="isTerminal === false">
-        <default-button class="btn" @click="switchForm">Авторизовать Терминал</default-button>
-        <default-button class="selected-form">Авторизация Оператора</default-button>
+        <default-button class="btn" @click="switchForm">Авторизовать Студента</default-button>
+        <default-button class="selected-form">Авторизация Преподавателя</default-button>
       </div>
     </transition>
     <transition name="slide-fade" mode="out-in">
@@ -60,9 +60,6 @@ export default {
 .page-title {
   display: flex;
   align-items: center;
-}
-.comp-inf {
-  padding-left: 25%;
 }
 .container {
   height: 100%;

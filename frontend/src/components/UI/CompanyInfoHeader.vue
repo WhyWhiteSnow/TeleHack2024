@@ -2,16 +2,16 @@
   <div class="base">
     <div class="company">
       <img
-        src="../../img/logo3.png"
-        alt="Логотип компании"
+        src="../../img/logo_uisi.jpg"
+        alt="Логотип учебного заведения"
         class="base-logo"
         height="70px"
         width="90px"
       />
-      Sevencom
+      UISI
     </div>
-    <div class="website">sevencom.ru</div>
-    <div class="phone">8 909 700-88-77</div>
+    <div class="website">uisi.ru</div>
+    <div class="phone">+7 952 512-25-52</div>
   </div>
 </template>
 
@@ -26,6 +26,9 @@ export default {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   justify-content: space-around;
 }
+.company img {
+  margin-right: 3%;
+}
 .company {
   font-family: 'Zen Dots';
   font-size: xx-large;
@@ -36,6 +39,6 @@ export default {
 .website,
 .phone {
   font-size: larger;
-  margin-left: 90px;
+  margin-left: 100px;
 }
 </style>

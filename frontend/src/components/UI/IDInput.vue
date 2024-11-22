@@ -6,7 +6,6 @@
     max="100"
     placeholder="Укажите id"
     autofocus
-    title="Укажите id терминала"
   />
 </template>
 

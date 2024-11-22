@@ -7,7 +7,7 @@
           id="id"
           name="id"
           class="id"
-          placeholder="Укажите id терминала"
+          placeholder="Укажите логин студента"
           required
         />
       </p>
