@@ -7,20 +7,7 @@
 <script>
 export default {
   data() {
-    return {
-      terminals: { id: '', password: '' },
-      supports: { id: '', password: '' },
-      application: {
-        activity: '',
-        surname: '',
-        name: '',
-        patronymic: '',
-        address: '',
-        phone: '',
-        email: '',
-        connectionDate: '',
-      },
-    }
+    return {}
   },
 }
 </script>

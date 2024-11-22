@@ -1,4 +1,4 @@
-from database import Base
+from database import Base, engine
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import Mapped
 
@@ -17,3 +17,5 @@ class Support(Base):
     id: Mapped[int] = Column(Integer, primary_key=True, index=True)
     password: Mapped[str | None] = Column(String)
     status: Mapped[str | None] = Column(String)
+
+Base.metadata.create_all(engine)

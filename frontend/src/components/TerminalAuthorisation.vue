@@ -1,6 +1,6 @@
 <template>
   <div class="term-auth">
-    <form @submit.prevent>
+    <form @submit.prevent="submit">
       <p>
         <id-input
           v-model="id"
@@ -22,33 +22,53 @@
         />
         <default-button @click="switchVisibility" class="show">
           <span v-if="passwordFieldType === 'password'">
-            <font-awesome-icon icon="fa-solid fa-eye" fa="xl" />
+            <font-awesome-icon icon="fa-solid fa-eye" fa="lg" />
           </span>
           <span v-else-if="passwordFieldType === 'text'">
-            <font-awesome-icon icon="fa-solid fa-eye-slash" fa="xl" />
+            <font-awesome-icon icon="fa-solid fa-eye-slash" fa="lg" />
           </span>
         </default-button>
       </p>
-      <default-button class="btn-subm" @click="$router.push('/terminal')">
-        Авторизоваться
-      </default-button>
+      <default-button class="btn-subm" @click="$router.push('/terminal')"> Авторизоваться </default-button>
     </form>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'term_auth',
   data() {
     return {
+      id: undefined,
       password: '',
       passwordFieldType: 'password',
+      token: null,
+      errorMessage: '',
     }
   },
   methods: {
-    switchVisibility() {
-      this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
-    },
+    // switchVisibility() {
+    //   this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
+    // },
+    // async submit() {
+    //   try {
+    //     const response = await axios.post('http://127.0.0.1:8000/autoriseTerminal', {
+    //       'id': this.id,
+    //       'password': this.password,
+    //     })
+
+    //     // Store the token in localStorage or Vuex
+    //     this.token = response.data.token // Assuming the token is returned in response.data.token
+    //     localStorage.setItem('jwt_token', this.token) // Store token for future requests
+
+    //     // Redirect to terminal page
+    //     this.$router.push('/terminal')
+    //   } catch (error) {
+    //     this.errorMessage = error.response?.data?.message || 'Ошибка авторизации'
+    //     console.error(error)
+    //   }
+    // },
   },
 }
 </script>
@@ -66,20 +86,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .password {
-  border-radius: 50px 0 0 50px;
-  border-right: none;
   margin: 2% 0;
-  max-width: 365px;
+  max-width: 400px;
 }
 .show {
-  border: solid white;
-  border-left: none;
-  border-radius: 0 50px 50px 0;
+  background: none;
+  border: none;
   padding: 1% 3% 1% 1%;
   margin: 2% 0;
   width: 35px;
+  position: absolute;
+  right: 35%;
 }
 .show:active {
   background-color: rgb(07, 01, 23);

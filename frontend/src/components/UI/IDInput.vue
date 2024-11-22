@@ -1,6 +1,5 @@
 <template>
   <input
-    v-model="id"
     type="number"
     required
     min="1"
@@ -15,9 +14,7 @@
 export default {
   name: 'id-input',
   data() {
-    return {
-      id: '',
-    }
+    return {}
   },
 }
 </script>

@@ -1,20 +1,12 @@
 <template>
-  <input
-    type="password"
-    required
-    placeholder="Введите пароль"
-    title="Введите пароль терминала"
-    v-model="password"
-  />
+  <input type="password" required placeholder="Введите пароль" title="Введите пароль терминала" />
 </template>
 
 <script>
 export default {
   name: 'pass-input',
   data() {
-    return {
-      password: '',
-    }
+    return {}
   },
 }
 </script>

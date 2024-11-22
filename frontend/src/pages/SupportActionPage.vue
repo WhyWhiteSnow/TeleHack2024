@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="terminals" v-for="terminal in terminals">
-        <div class="terminal" @click="$router.push('/call')">
+        <div class="terminal" @click="$router.push('/call/{{ terminals.id }}')">
           <img :src="terminal.imgSrc" alt="Видео с терминала" title="Видео с терминала" />
           <div class="name">{{ terminal.name }}</div>
           <div class="address">{{ terminal.address }}</div>

@@ -53,20 +53,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 .password {
-  border-radius: 50px 0 0 50px;
-  border-right: none;
-  margin: 2% 0;
-  max-width: 365px;
+  margin: 1% 0;
+  max-width: 400px;
 }
 .show {
-  border: solid white;
-  border-left: none;
-  border-radius: 0 50px 50px 0;
+  background: none;
+  border: none;
   padding: 1% 3% 1% 1%;
   margin: 2% 0;
   width: 35px;
+  position: absolute;
+  right: 35%;
 }
 .show:active {
   background-color: rgb(07, 01, 23);

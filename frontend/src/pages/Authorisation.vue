@@ -27,6 +27,7 @@
 <script>
 import TerminalAuthorisation from '@/components/TerminalAuthorisation.vue'
 import SupportAuthorisation from '@/components/SupportAuthorisation.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -73,6 +74,7 @@ export default {
   margin: 1% 0;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 .selected-form {
   margin: 0 2%;

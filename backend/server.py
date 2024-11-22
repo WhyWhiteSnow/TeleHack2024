@@ -8,7 +8,7 @@ from fastapi import (
 )
 from fastapi.responses import HTMLResponse
 from typing import List, Dict
-
+from fastapi.middleware.cors import CORSMiddleware
 # from fastapi.templating import Jinja2Templates
 # from fastapi.security import OAuth2PasswordBearer
 
@@ -26,6 +26,20 @@ from schemas import TerminalData, TerminalDataJWT, SupportData, SupportDataJWT
 from jwt_settings import *
 
 app = FastAPI()
+# origins = [
+#     "http://localhost.tiangolo.com",
+#     "https://localhost.tiangolo.com",
+#     "http://localhost",
+#     "http://localhost:5173",
+# ]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 # pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # Хранение активных соединений и комнат
@@ -118,8 +132,9 @@ def get_rooms(supportdata: SupportDataJWT, db: Session = Depends(get_db)):
     return {"details": "wrong jwt"}
 
 
-@app.get("/autoriseTerminal/")
+@app.post("/autoriseTerminal/")
 def get_users(terminaldata: TerminalData, db: Session = Depends(get_db)):
+    return {"msg":"sosi"}
     try:
         terminal = db.query(Terminal).get(terminaldata.id)
     except Exception as e:
@@ -144,7 +159,7 @@ def get_users(terminaldata: TerminalData, db: Session = Depends(get_db)):
         )
 
 
-@app.get("/autoriseSupport/")
+@app.post("/autoriseSupport/")
 def get_users(supportdata: SupportData, db: Session = Depends(get_db)):
     try:
         support = db.query(Support).get(supportdata.id)
